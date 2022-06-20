@@ -2,13 +2,17 @@ package classes;
 
 import interfaces.Observer;
 import interfaces.Subject;
-import lombok.AllArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
-@AllArgsConstructor
-public class EmailTopic implements Subject {
-    private List<Observer> observerList;
+
+public class EmailTopicSubject implements Subject {
+    private final List<Observer> observerList;
     private String message;
+
+   public EmailTopicSubject() {
+        this.observerList = new ArrayList<>();
+    }
 
     public void postMessage(String message) {
         System.out.println("From my EmailTopic "+ message);
@@ -37,7 +41,9 @@ public class EmailTopic implements Subject {
     }
 
     @Override
-    public String getUpdate(Observer observer) {
+    public String getUpdate() {
         return this.message;
     }
+
+
 }
